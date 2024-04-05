@@ -1,0 +1,74 @@
+﻿@page "/list"
+@attribute [StreamRendering]
+
+<PageTitle>Отправления</PageTitle>
+
+<h1>Ваши отправления</h1>
+
+<p>Данная таблица отображает все совершенные Вами отправления</p>
+
+@if (forecasts == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID груза</th>
+            <th>Логистическая компания</th>
+            <th>Номер транспорта</th>
+            <th>Стоимость</th>
+            <th>Статус</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var forecast in forecasts)
+        {
+            <tr>
+                <td>@forecast.Id</td>
+                <td>@forecast.Company</td>
+                <td>@forecast.TruckNumber</td>
+                <td>@forecast.Cost</td>
+                <td>@forecast.Status</td>
+                <td>Подробности</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Data[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        
+        var status = new[] { "В пути", "Загрузка в порту", "Выполнен", "Потерян" };
+        var companies = new[] { "Fast&Cheap", "AllWorld", "Truck365"};
+        
+        forecasts = Enumerable.Range(1, 5).Select(index => new Data
+        {
+            Id = Random.Shared.Next(107, 5673),
+            Company = companies[Random.Shared.Next(companies.Length)],
+            TruckNumber = Random.Shared.Next(1070, 56730),
+            Status = status[Random.Shared.Next(status.Length)],
+        }).ToArray();
+    }
+
+    private class Data
+    {
+        public long Id { get; set; }
+        public string Company { get; set; }
+        public int TruckNumber { get; set; }
+        public double Cost => 10 * Random.Shared.Next(320, 56730);
+        public string Status { get; set; }
+        
+    }
+
+}

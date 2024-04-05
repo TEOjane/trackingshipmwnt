@@ -1,0 +1,32 @@
+﻿@page "/add"
+@rendermode InteractiveServer
+
+<PageTitle>Новое отправление</PageTitle>
+
+<h1>Добавить отправление</h1>
+
+<InputFile Changed="@OnChanged" />
+
+    <Fields>
+        <Field ColumnSize="ColumnSize.Is6.OnDesktop">
+            <FieldLabel>City</FieldLabel>
+            <TextEdit />
+        </Field>
+        <Field ColumnSize="ColumnSize.Is4.OnDesktop">
+            <FieldLabel>State</FieldLabel>
+            <Select TValue="string">
+            </Select>
+        </Field>
+        <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+            <FieldLabel>Zip</FieldLabel>
+            <TextEdit />
+        </Field>
+    </Fields>
+
+@code {
+    Task OnChanged( InputFileChangeEventArgs e )
+    {
+        return Task.CompletedTask;
+    }
+
+}
