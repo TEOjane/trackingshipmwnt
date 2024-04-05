@@ -15,7 +15,12 @@
 
     <ItemGroup>
       <PackageReference Include="Syncfusion.Blazor.Cards" Version="25.1.38" />
+      <PackageReference Include="Syncfusion.Blazor.DataForm" Version="25.1.38" />
       <PackageReference Include="Syncfusion.Blazor.Themes" Version="25.1.38" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>

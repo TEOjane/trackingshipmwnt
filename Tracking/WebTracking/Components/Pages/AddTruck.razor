@@ -1,27 +1,28 @@
 ﻿@page "/add"
+@using Domain
 @rendermode InteractiveServer
 
 <PageTitle>Новое отправление</PageTitle>
 
 <h1>Добавить отправление</h1>
 
-<InputFile Changed="@OnChanged" />
+<SfDataForm ID="MyForm"
+            Model="@CargoModel"
+            Width="50%">
+            
+    <FormValidator>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+    </FormValidator>
 
-    <Fields>
-        <Field ColumnSize="ColumnSize.Is6.OnDesktop">
-            <FieldLabel>City</FieldLabel>
-            <TextEdit />
-        </Field>
-        <Field ColumnSize="ColumnSize.Is4.OnDesktop">
-            <FieldLabel>State</FieldLabel>
-            <Select TValue="string">
-            </Select>
-        </Field>
-        <Field ColumnSize="ColumnSize.Is2.OnDesktop">
-            <FieldLabel>Zip</FieldLabel>
-            <TextEdit />
-        </Field>
-    </Fields>
+    <InputFile Changed="@OnChanged" />
+    
+    <FormItems>
+        <FormItem Field="@nameof(CargoModel.DeparturePoint)" Placeholder="e.g. Andrew Fuller" LabelText="Name on card" ></FormItem>
+        <FormItem Field="@nameof(CargoModel.Destination)" LabelText="Card Number" >
+        </FormItem>
+    </FormItems>
+
+</SfDataForm>
 
 @code {
     Task OnChanged( InputFileChangeEventArgs e )
@@ -29,4 +30,5 @@
         return Task.CompletedTask;
     }
 
+    Cargo CargoModel = new Cargo();
 }
