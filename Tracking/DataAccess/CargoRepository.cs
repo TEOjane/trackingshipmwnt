@@ -6,7 +6,9 @@ public class CargoRepository : ICargoRepository
 {
     public decimal CalcShippingCost(Cargo cargo)
     {
-        throw new NotImplementedException();
+        decimal cost = Convert.ToDecimal(cargo.Weight + 100);
+
+        return cost;
     }
 
     public void GetLocation(Cargo cargo)
