@@ -1,8 +1,6 @@
-using Domain;
+namespace Domain;
 
-namespace Application;
-
-public interface IApplicationService
+public interface IGoodsRepository
 {
     decimal CalcShippingCost(Goods goods);
 

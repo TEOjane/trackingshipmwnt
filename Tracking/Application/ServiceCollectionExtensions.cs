@@ -9,7 +9,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplicationService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<IApplicationService, ApplicationService>();
-        serviceCollection.AddSingleton<ICargoRepository, CargoRepository>();
+        serviceCollection.AddSingleton<IGoodsRepository, GoodsRepository>();
 
         return serviceCollection;
     }

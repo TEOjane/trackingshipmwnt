@@ -1,9 +1,9 @@
 ﻿namespace Domain;
 
-public class Cargo
+public class Goods
 {
     public long Id { get; set; }
-    public Carrier Carrier { get; set; }
+    public Company Company { get; set; }
     public DateTime DepartureTime { get; set; }
     public string DeparturePoint { get; set; }
     public string Destination { get; set; }

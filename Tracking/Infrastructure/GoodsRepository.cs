@@ -2,31 +2,31 @@
 
 namespace DataAccess;
 
-public class CargoRepository : ICargoRepository
+public class GoodsRepository : IGoodsRepository
 {
-    public decimal CalcShippingCost(Cargo cargo)
+    public decimal CalcShippingCost(Goods goods)
     {
-        decimal cost = Convert.ToDecimal(cargo.Weight + 100);
+        decimal cost = Convert.ToDecimal(goods.Weight + 100);
 
         return cost;
     }
 
-    public void GetLocation(Cargo cargo)
+    public void GetLocation(Goods goods)
     {
         throw new NotImplementedException();
     }
 
-    public Cargo GetCargoInfo(long cargoId)
+    public Goods GetCargoInfo(long cargoId)
     {
         throw new NotImplementedException();
     }
 
-    public long AddCargo(Cargo cargo)
+    public long AddCargo(Goods goods)
     {
         throw new NotImplementedException();
     }
 
-    public Carrier GetCarrierInfo(long carrierId)
+    public Company GetCarrierInfo(long carrierId)
     {
         throw new NotImplementedException();
     }

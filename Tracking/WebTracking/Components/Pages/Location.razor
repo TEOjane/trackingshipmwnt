@@ -1,0 +1,35 @@
+﻿@page "/location"
+@using Domain
+@rendermode InteractiveServer
+
+<PageTitle>Новое отправление</PageTitle>
+
+<h1>Добавить отправление</h1>
+
+<SfDataForm ID="MyForm"
+            Model="@_goodsModel"
+            Width="50%">
+            
+    <FormValidator>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+    </FormValidator>
+
+    <p>Загрузите фото пломбы</p>
+    <InputFile Changed="@OnChanged" />
+    
+    <FormItems>
+        <FormItem Field="@nameof(_goodsModel.DeparturePoint)" Placeholder="e.g. Andrew Fuller" LabelText="Name on card" ></FormItem>
+        <FormItem Field="@nameof(_goodsModel.Destination)" LabelText="Card Number" >
+        </FormItem>
+    </FormItems>
+
+</SfDataForm>
+
+@code {
+    Task OnChanged( InputFileChangeEventArgs e )
+    {
+        return Task.CompletedTask;
+    }
+
+    Goods _goodsModel = new Goods();
+}

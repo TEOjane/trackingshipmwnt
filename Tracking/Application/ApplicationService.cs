@@ -4,40 +4,40 @@ namespace Application;
 
 public class ApplicationService : IApplicationService
 {
-    private ICargoRepository _cargoRepository;
+    private IGoodsRepository _goodsRepository;
 
-    public ApplicationService(ICargoRepository cargoRepository)
+    public ApplicationService(IGoodsRepository goodsRepository)
     {
-        _cargoRepository = cargoRepository;
+        _goodsRepository = goodsRepository;
     }
 
-    public decimal CalcShippingCost(Cargo cargo)
+    public decimal CalcShippingCost(Goods goods)
     {
-        return _cargoRepository.CalcShippingCost(cargo);
+        return _goodsRepository.CalcShippingCost(goods);
     }
 
-    public void GetLocation(Cargo cargo)
+    public void GetLocation(Goods goods)
     {
-        _cargoRepository.GetLocation(cargo);
+        _goodsRepository.GetLocation(goods);
     }
 
-    public Cargo GetCargoInfo(long cargoId)
+    public Goods GetCargoInfo(long cargoId)
     {
-        return _cargoRepository.GetCargoInfo(cargoId);
+        return _goodsRepository.GetCargoInfo(cargoId);
     }
 
-    public long AddCargo(Cargo cargo)
+    public long AddCargo(Goods goods)
     {
-        return _cargoRepository.AddCargo(cargo);
+        return _goodsRepository.AddCargo(goods);
     }
 
-    public Carrier GetCarrierInfo(long carrierId)
+    public Company GetCarrierInfo(long carrierId)
     {
-        return _cargoRepository.GetCarrierInfo(carrierId);
+        return _goodsRepository.GetCarrierInfo(carrierId);
     }
 
     public Truck GetTruckInfo(string truckNumber)
     {
-        return _cargoRepository.GetTruckInfo(truckNumber);
+        return _goodsRepository.GetTruckInfo(truckNumber);
     }
 }
