@@ -18,26 +18,26 @@ public class ApplicationService : IApplicationService
 
     public void GetLocation(Goods goods)
     {
-        _goodsRepository.GetLocation(goods);
+        throw new NotImplementedException();
     }
 
-    public Goods GetCargoInfo(long cargoId)
+    public Goods GetGoodsInfo(long goodsId)
     {
-        return _goodsRepository.GetCargoInfo(cargoId);
+        return _goodsRepository.GetGoodsInfo(goodsId);
     }
 
-    public long AddCargo(Goods goods)
+    public long AddGoods(Goods goods)
     {
-        return _goodsRepository.AddCargo(goods);
+        throw new NotImplementedException();
     }
 
-    public Company GetCarrierInfo(long carrierId)
+    public Company GetCompanyInfo(long carrierId)
     {
-        return _goodsRepository.GetCarrierInfo(carrierId);
+        throw new NotImplementedException();
     }
 
     public Truck GetTruckInfo(string truckNumber)
     {
-        return _goodsRepository.GetTruckInfo(truckNumber);
+        throw new NotImplementedException();
     }
 }

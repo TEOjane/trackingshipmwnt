@@ -2,34 +2,37 @@
 @using Domain
 @rendermode InteractiveServer
 
-<PageTitle>Новое отправление</PageTitle>
+<PageTitle>Отследить отправление</PageTitle>
 
-<h1>Добавить отправление</h1>
+<h1>Отследить отправление</h1>
 
-<SfDataForm ID="MyForm"
-            Model="@_goodsModel"
-            Width="50%">
-            
-    <FormValidator>
-        <DataAnnotationsValidator></DataAnnotationsValidator>
-    </FormValidator>
+<select name="pets" id="pet-select">
+  <option value="">--Выберите отправление--</option>
+  <option value="dog">0023259</option>
+  <option value="cat">11D345</option>
+  <option value="hamster">A1234</option>
+  <option value="parrot">BC1270</option>
+</select>
+<p>
+  <button onclick="getLocation()">Отследить геолокацию</button>
+</p>
+<p id="loc" style="display: none;">Последняя локация:</p>
+<p id="demo"></p>
 
-    <p>Загрузите фото пломбы</p>
-    <InputFile Changed="@OnChanged" />
-    
-    <FormItems>
-        <FormItem Field="@nameof(_goodsModel.DeparturePoint)" Placeholder="e.g. Andrew Fuller" LabelText="Name on card" ></FormItem>
-        <FormItem Field="@nameof(_goodsModel.Destination)" LabelText="Card Number" >
-        </FormItem>
-    </FormItems>
-
-</SfDataForm>
-
-@code {
-    Task OnChanged( InputFileChangeEventArgs e )
-    {
-        return Task.CompletedTask;
+<script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
     }
+    function showPosition(position) {
+      var e =  document.getElementById("loc");
+      e.style.display = 'block';
+      x.innerHTML = "Широта: " + position.coords.latitude + 
+      "<br>Долгота: " + position.coords.longitude;
+    }
+</script>
 
-    Goods _goodsModel = new Goods();
-}

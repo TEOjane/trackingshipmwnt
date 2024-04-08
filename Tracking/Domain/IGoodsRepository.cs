@@ -6,11 +6,11 @@ public interface IGoodsRepository
 
     void GetLocation(Goods goods);
 
-    Goods GetCargoInfo(long cargoId);
+    Goods GetGoodsInfo(long cargoId);
 
-    long AddCargo(Goods goods);
+    long AddGoods(Goods goods);
 
-    Company GetCarrierInfo(long carrierId);
+    Company GetCompanyInfo(long carrierId);
 
     Truck GetTruckInfo(string truckNumber);
 }
